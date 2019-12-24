@@ -1,10 +1,12 @@
 FROM haproxy:2.1.1-alpine
 
-ENV WAIT4X_VERSION=v0.1.0
+ENV HAPROXY_DATA_PLANE_API_VERSION=v1.2.4
 
-LABEL maintainer="mohammad.abdolirad@snapp.cab"
+LABEL maintainer="m.abdolirad@gmail.com"
 
-RUN apk --no-cache --update add git bash curl rsync openssh-client openssl \
-    && curl -SLO https://github.com/atkrad/wait4x/releases/download/$WAIT4X_VERSION/wait4x-linux-amd64 \
-    && mv wait4x-linux-amd64 /usr/local/bin/wait4x \
-    && chmod a+x /usr/local/bin/wait4x
+RUN apk --no-cache --update add curl \
+    && curl -SLO https://github.com/haproxytech/dataplaneapi/releases/download/$HAPROXY_DATA_PLANE_API_VERSION/dataplaneapi \
+    && mv dataplaneapi /usr/local/bin/dataplaneapi \
+    && chmod a+x /usr/local/bin/dataplaneapi
+
+COPY haproxy.cfg /usr/local/etc/haproxy/haproxy.cfg
