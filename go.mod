@@ -3,6 +3,7 @@ module github.com/atkrad/gateway
 go 1.13
 
 require (
+	github.com/haproxytech/client-native v1.2.6 // indirect
 	github.com/pelletier/go-toml v1.6.0 // indirect
 	github.com/sirupsen/logrus v1.2.0
 	github.com/spf13/afero v1.2.2 // indirect
